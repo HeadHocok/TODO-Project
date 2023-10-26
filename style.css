@@ -72,9 +72,10 @@ body {
     color: var(--font-color);
 }
 
-.theme-btn{
+.theme-btn {
     position: absolute;
     right: 30px;
+    top: 20px;
     width: 64px;
     height: 40px;
     background: initial;
@@ -83,17 +84,23 @@ body {
     outline: none;
     cursor: pointer;
 }
-
 .header-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.theme-btn img {
-    width: 60px;
-    height: 60px;
-    transform: translate(0, -10px);
+.theme-status-img {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    transform: translate(-58px, -13px);
+}
+
+
+.theme-btn-img {
+    position: absolute;
+    transform: translate(-30px, -30px);
 }
 
 .row-list {

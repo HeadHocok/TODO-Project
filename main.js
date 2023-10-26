@@ -73,14 +73,17 @@ themeButton.addEventListener("click", function () {
     const body = document.body;
     const themeButton = document.querySelector("#theme-btn");
     const themeImg = themeButton.querySelector("#theme-img");
+    const themeStatus = themeButton.querySelector("#theme-status-img");
 
     if (body.classList.contains('dark-theme')) {
         body.classList.remove('dark-theme');
         themeImg.src = "assets/icon/toggle-off.svg";
+        themeStatus.src = "assets/icon/light-theme.svg";
         isDarkTheme = false;
     } else {
         body.classList.add('dark-theme');
         themeImg.src = "assets/icon/toggle-on.svg";
+        themeStatus.src = "assets/icon/dark-theme.svg";
         isDarkTheme = true;
     }
 
@@ -422,13 +425,16 @@ function loadTasksFromLocalStorage() {
     const body = document.body;
     const themeButton = document.querySelector("#theme-btn");
     const themeImg = themeButton.querySelector("#theme-img");
+    const themeStatus = themeButton.querySelector("#theme-status-img");
 
     if (isDarkTheme) {
         body.classList.add('dark-theme');
         themeImg.src = "assets/icon/toggle-on.svg";
+        themeStatus.src = "assets/icon/dark-theme.svg";
     } else {
         body.classList.remove('dark-theme');
         themeImg.src = "assets/icon/toggle-off.svg";
+        themeStatus.src = "assets/icon/light-theme.svg";
     }
 
     for (let i = 0; i < tasksData.length; i++) {
