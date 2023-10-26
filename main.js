@@ -85,8 +85,6 @@ themeButton.addEventListener("click", function () {
     }
 
     localStorage.setItem('isDarkTheme', isDarkTheme.toString());
-
-    loadTasksFromLocalStorage();
 });
 
 function validateDateInput(input) {
