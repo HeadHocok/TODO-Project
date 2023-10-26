@@ -9,6 +9,7 @@
     --font-color-alt: #000000;
     --selected-color: #cee9ce;
     --done-color: #f8ebc3;
+    --warning-color: #0059ff;
 }
 
 * {
@@ -26,6 +27,7 @@
     --font-color-alt: #ffffff;
     --selected-color: #5B9A8B;
     --done-color: #a6906b;
+    --warning-color: #ff6200;
 }
 
 body {
@@ -107,7 +109,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
+    margin: 0 40px;
 }
 
 .task-input {
@@ -292,7 +294,7 @@ h4{
 }
 
 .error-message{
-    color: #0059ff;
+    color: var(--warning-color);
     font-size: 12px;
     text-align: center;
     position: absolute;
