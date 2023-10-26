@@ -24,6 +24,8 @@ deleteAllButton.addEventListener('click', deleteAll);
 
 document.addEventListener('mousemove', multipleSelection)
 
+let isDarkTheme = false;
+
 let IsEditing = false;
 
 let currentTaskNumber = 1;
@@ -32,9 +34,7 @@ let isSelecting = false;
 let isSingleSelecting = false;
 let selectedElements = [];
 
-document.addEventListener('DOMContentLoaded', function () {
-    loadTasksFromLocalStorage();
-});
+document.addEventListener('DOMContentLoaded', loadTasksFromLocalStorage);
 
 if (editDateInput) {
     editDateInput.addEventListener('input', function () {
@@ -77,10 +77,16 @@ themeButton.addEventListener("click", function () {
     if (body.classList.contains('dark-theme')) {
         body.classList.remove('dark-theme');
         themeImg.src = "assets/icon/toggle-off.svg";
+        isDarkTheme = false;
     } else {
         body.classList.add('dark-theme');
         themeImg.src = "assets/icon/toggle-on.svg";
+        isDarkTheme = true;
     }
+
+    localStorage.setItem('isDarkTheme', isDarkTheme.toString());
+
+    loadTasksFromLocalStorage();
 });
 
 function validateDateInput(input) {
@@ -412,6 +418,20 @@ function saveTasksToLocalStorage() {
 
 function loadTasksFromLocalStorage() {
     const tasksData = JSON.parse(localStorage.getItem('tasks')) || [];
+
+    isDarkTheme = localStorage.getItem('isDarkTheme') === 'true';
+
+    const body = document.body;
+    const themeButton = document.querySelector("#theme-btn");
+    const themeImg = themeButton.querySelector("#theme-img");
+
+    if (isDarkTheme) {
+        body.classList.add('dark-theme');
+        themeImg.src = "assets/icon/toggle-on.svg";
+    } else {
+        body.classList.remove('dark-theme');
+        themeImg.src = "assets/icon/toggle-off.svg";
+    }
 
     for (let i = 0; i < tasksData.length; i++) {
         const taskData = tasksData[i];
