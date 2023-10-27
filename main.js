@@ -464,32 +464,32 @@ function loadTasksFromLocalStorage() {
         const taskData = tasksData[i];
 
         const taskHTML = `
-            <tr class="task-item" data-action="task" id="task-item" data-selected="false">
-                <th scope="row" class="task-number">${currentTaskNumber}</th>
-                <td class="task-text">
-                    <span class="task-content">${taskText}</span>
-                    <input type="text" class="editInput" placeholder="Редактировать задачу..." hidden>
-                </td>
-                <td class="task-date">
-                    <span class="task-date-content">${taskDate}</span>
-                    <input type="text" class="editDateInput" id="edit-date-input" placeholder="⌚" hidden>
-                    <span class="error-message"></span>
-                </td>
-                <td class="text-end">
-                    <button type="button" data-action="edit" class="btn edit-btn">
-                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z"/></svg>
-                    </button>
-                    <button type="button" data-action="save" class="btn save-btn" hidden>
-                        <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612"><path d="M606.2 120.8L489.9 4.6C487.4 2.1 482.5 0 477.4 0H434.3H176H40.7C18.2 0.4 0 18.7 0 41.1v529.7c0 22.5 18.3 40.7 40.7 40.7h86.3h368.7h75.6c22.5 0 40.7-18.3 40.7-40.7V131.7C611.1 128.4 609.5 124.2 606.2 120.8zM419.3 31.2v136.2H376 376v-136.2H419.3zM344.6 31.2v137H192.6c-0.8 0-0.8-0.8-0.8-0.8V31.2H344.6zM141.9 580.9V390.7c0-35.7 29.1-64.7 64.7-64.7h208.4c35.7 0 64.7 29.1 64.7 64.7v190.1H141.9V580.9zM580.4 570.9c0 5-4.2 10-10 10h-59.8V390.7c0-52.3-43.2-95.5-95.5-95.5H207.5c-52.3 0-95.5 43.2-95.5 95.5v190.1H40.6c-5 0-10-4.2-10-10V41.1c0-5 4.2-10 10-10h120.4v136.2c0 17.5 14.1 31.5 31.5 31.5h225.9c17.5 0 31.5-14.1 31.5-31.5V31.2h23.2l107.1 107.1L580.4 570.9z M422.6 490.3c0 8.3-6.6 14.9-14.9 14.9H217.5c-8.3 0-14.9-6.6-14.9-14.9 0-8.3 6.6-14.9 14.9-14.9h189.3C415.9 475.4 422.6 482.1 422.6 490.3z M422.6 410.7c0 8.3-6.6 14.9-14.9 14.9H217.5c-8.3 0-14.9-6.6-14.9-14.9 0-8.3 6.6-14.9 14.9-14.9h189.3C415.9 394.8 422.6 401.6 422.6 410.7z"/></svg>                            
-                    </button>
-                    <button type="button" data-action="empty" class="btn btn-empty" hidden>
-                        <img src="assets/icon/empty-button.svg" width="25" height="25" alt="empty">
-                    </button>
-                    <button type="button" data-action="delete" class="btn delete-btn">
-                        <img src="assets/icon/delete.svg"  alt="delete">
-                    </button>
-                </td>
-            </tr>`;
+                    <tr class="task-item" data-action="task" id="task-item" data-selected="false">
+                        <th scope="row" class="task-number">${currentTaskNumber}</th>
+                        <td class="task-text">
+                            <span class="task-content">${taskData.content}</span>
+                            <input type="text" class="editInput" placeholder="Редактировать задачу..." hidden>
+                        </td>
+                        <td class="task-date">
+                            <span class="task-date-content">${taskData.date}</span>
+                            <input type="text" class="editDateInput" id="edit-date-input" placeholder="⌚" hidden>
+                            <span class="error-message"></span>
+                        </td>
+                        <td class="text-end">
+                            <button type="button" data-action="edit" class="btn edit-btn">
+                                <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.707,5.565,18.435,2.293a1,1,0,0,0-1.414,0L3.93,15.384a.991.991,0,0,0-.242.39l-1.636,4.91A1,1,0,0,0,3,22a.987.987,0,0,0,.316-.052l4.91-1.636a.991.991,0,0,0,.39-.242L21.707,6.979A1,1,0,0,0,21.707,5.565ZM7.369,18.489l-2.788.93.93-2.788,8.943-8.944,1.859,1.859ZM17.728,8.132l-1.86-1.86,1.86-1.858,1.858,1.858Z"/></svg>
+                            </button>
+                            <button type="button" data-action="save" class="btn save-btn" hidden>
+                                <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612"><path d="M606.2 120.8L489.9 4.6C487.4 2.1 482.5 0 477.4 0H434.3H176H40.7C18.2 0.4 0 18.7 0 41.1v529.7c0 22.5 18.3 40.7 40.7 40.7h86.3h368.7h75.6c22.5 0 40.7-18.3 40.7-40.7V131.7C611.1 128.4 609.5 124.2 606.2 120.8zM419.3 31.2v136.2H376 376v-136.2H419.3zM344.6 31.2v137H192.6c-0.8 0-0.8-0.8-0.8-0.8V31.2H344.6zM141.9 580.9V390.7c0-35.7 29.1-64.7 64.7-64.7h208.4c35.7 0 64.7 29.1 64.7 64.7v190.1H141.9V580.9zM580.4 570.9c0 5-4.2 10-10 10h-59.8V390.7c0-52.3-43.2-95.5-95.5-95.5H207.5c-52.3 0-95.5 43.2-95.5 95.5v190.1H40.6c-5 0-10-4.2-10-10V41.1c0-5 4.2-10 10-10h120.4v136.2c0 17.5 14.1 31.5 31.5 31.5h225.9c17.5 0 31.5-14.1 31.5-31.5V31.2h23.2l107.1 107.1L580.4 570.9z M422.6 490.3c0 8.3-6.6 14.9-14.9 14.9H217.5c-8.3 0-14.9-6.6-14.9-14.9 0-8.3 6.6-14.9 14.9-14.9h189.3C415.9 475.4 422.6 482.1 422.6 490.3z M422.6 410.7c0 8.3-6.6 14.9-14.9 14.9H217.5c-8.3 0-14.9-6.6-14.9-14.9 0-8.3 6.6-14.9 14.9-14.9h189.3C415.9 394.8 422.6 401.6 422.6 410.7z"/></svg>                            
+                            </button>
+                            <button type="button" data-action="empty" class="btn btn-empty" hidden>
+                                <img src="assets/icon/empty-button.svg" width="25" height="25" alt="empty">
+                            </button>
+                            <button type="button" data-action="delete" class="btn delete-btn">
+                                <img src="assets/icon/delete.svg"  alt="delete">
+                            </button>
+                        </td>
+                    </tr>`;
 
         tasksList.insertAdjacentHTML('beforeend', taskHTML);
 
