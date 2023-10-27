@@ -34,7 +34,10 @@ let isSelecting = false;
 let isSingleSelecting = false;
 let selectedElements = [];
 
-document.addEventListener('DOMContentLoaded', loadTasksFromLocalStorage);
+document.addEventListener('DOMContentLoaded', () => {
+    loadTasksFromLocalStorage();
+    filterTasks();
+});
 
 if (editDateInput) {
     editDateInput.addEventListener('input', function () {
@@ -221,7 +224,12 @@ function addTask(event) {
                         </td>
                     </tr>`;
 
-    tasksList.insertAdjacentHTML('beforeend', taskHTML);
+    const unDoneTasks = Array.from(tasksList.querySelectorAll('.task-item:not(.done-task)'));
+    if (unDoneTasks.length > 0) {
+        unDoneTasks[unDoneTasks.length - 1].insertAdjacentHTML('afterend', taskHTML);
+    } else {
+        tasksList.insertAdjacentHTML('beforeend', taskHTML);
+    }
 
     textInput.value = "";
     dateInput.value = "";
@@ -494,7 +502,40 @@ function loadTasksFromLocalStorage() {
             }
         }
     }
+}
 
-    updateTaskNumbers();
+function filterTasks() {
+    const taskItems = document.querySelectorAll('.task-item');
+
+    const doneTasks = [];
+    const unDoneTasks = [];
+
+    for (let i = 0; i < taskItems.length; i++) {
+        const taskItem = taskItems[i];
+        const taskText = taskItem.querySelector('.task-content').textContent.toLowerCase();
+        const isDone = taskItem.classList.contains('done-task');
+
+        if (isDone) {
+            doneTasks.push(taskItem);
+        } else {
+            unDoneTasks.push(taskItem);
+        }
+    }
+
+    // Показываем невыполненные задачи
+    for (let i = 0; i < unDoneTasks.length; i++) {
+        const taskItem = unDoneTasks[i];
+        taskItem.style.display = "table-row";
+        tasksList.appendChild(taskItem);
+    }
+
+    // Показываем выполненные задачи
+    for (let i = 0; i < doneTasks.length; i++) {
+        const taskItem = doneTasks[i];
+        taskItem.style.display = "table-row";
+        tasksList.appendChild(taskItem);
+    }
+
     checkEmptyMessage();
+    updateTaskNumbers();
 }
