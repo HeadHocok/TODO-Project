@@ -275,7 +275,8 @@ h4{
 
 .task-number {
     position: absolute;
-    padding-top: 20px;
+    top: 50%;
+    transform: translateY(-50%);
     left: -32px;
     width: 32px;
     text-align: center;
@@ -295,10 +296,12 @@ h4{
 
 .error-message{
     color: var(--warning-color);
+    font-family: var(--font-primary);
     font-size: 12px;
     text-align: center;
     position: absolute;
-    font-family: var(--font-primary);
+    top: 0;
+    right: 45px;
 }
 
 .taskTitle{
@@ -316,6 +319,15 @@ h4{
 .task-text{
     position: relative;
     color: var(--font-color);
+}
+
+.task-date {
+    color: var(--font-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
 }
 
 svg,
@@ -361,11 +373,6 @@ img {
     resize: vertical; /* Разрешить растягивание только по вертикали */
     white-space: pre-wrap; /* Разрешить перенос слов на новую строку */
     word-wrap: break-word;
-}
-
-textarea {
-    width: 100%;
-    height: 200px; /* Измените высоту по своему усмотрению */
 }
 
 .save-btn svg path,

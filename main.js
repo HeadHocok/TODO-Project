@@ -91,22 +91,34 @@ themeButton.addEventListener("click", function () {
 });
 
 function validateDateInput(input) {
-    const datePattern = /^\d{2}\.\d{2}\.\d{2}$/;
+    const datePattern = /^[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{2}$/;
     const errorMessage = input.parentElement.querySelector('.error-message');
 
     if (input.value === "") {
-        if (errorMessage) errorMessage.textContent = ''
-        else input.setCustomValidity("");
-        return true;
-    } else if (!datePattern.test(input.value)) {
-        if (errorMessage) errorMessage.textContent = "ДД.ММ.ГГ";
-        else input.setCustomValidity("Введите дату в формате ДД.ММ.ГГ");
-        return false;
-    } else {
-        if (errorMessage) errorMessage.textContent = ''
-        else input.setCustomValidity("");
+        if (errorMessage) {
+            errorMessage.textContent = ''
+        } else {
+            input.setCustomValidity("");
+        }
         return true;
     }
+
+    if (!datePattern.test(input.value)) {
+        if (errorMessage) {
+            errorMessage.textContent = "ДД.ММ.ГГ";
+        } else {
+            input.setCustomValidity("Введите дату в формате ДД.ММ.ГГ");
+        }
+        return false;
+    }
+
+    if (errorMessage) {
+        errorMessage.textContent = ''
+    }
+    else {
+        input.setCustomValidity("");
+    }
+    return true;
 }
 
 function multipleSelection(event) {
@@ -188,7 +200,7 @@ function addTask(event) {
                             <span class="task-content">${taskText}</span>
                             <input type="text" class="editInput" placeholder="Редактировать задачу..." hidden>
                         </td>
-                        <td style="vertical-align: middle;" class="task-date">
+                        <td class="task-date">
                             <span class="task-date-content">${taskDate}</span>
                             <input type="text" class="editDateInput" id="edit-date-input" placeholder="⌚" hidden>
                             <span class="error-message"></span>
