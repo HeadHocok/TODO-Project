@@ -10,6 +10,7 @@
     --selected-color: #cee9ce;
     --done-color: #f8ebc3;
     --warning-color: #0059ff;
+    --success-color: #5CB85C;
 }
 
 * {
@@ -150,7 +151,7 @@ input {
 input.submit{
     font-size: 35px;
     color: var(--color-ui);
-    background: #5CB85C;
+    background: var(--success-color);
     width: auto;
     border-radius: 50%;
     padding: 0 12px;
@@ -161,9 +162,9 @@ input.submit{
 }
 
 .submit:hover{
-    color: #5CB85C;
+    color: var(--success-color);
     background-color: var(--color-ui);
-    border-color: #5CB85C;
+    border-color: var(--success-color);
 }
 
 h4{
@@ -177,7 +178,7 @@ h4{
     overflow-y: auto;
 
     scrollbar-width: thin;
-    scrollbar-color: #5CB85C var(--primary-color);
+    scrollbar-color: var(--success-color);
 
     margin-bottom: 25px;
 }
@@ -319,6 +320,7 @@ h4{
 .task-text{
     position: relative;
     color: var(--font-color);
+    padding: 0;
 }
 
 .task-date {
@@ -327,7 +329,6 @@ h4{
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 10px;
 }
 
 svg,
@@ -364,20 +365,26 @@ img {
 .editInput,
 .editDateInput{
     background: var(--color-ui-alt);
+    color: var(--font-color-alt);
     box-shadow: 0 7px 33px -4px rgba(4, 34, 225, 0.24);
     border-radius: 34px;
     border: none;
     outline: none;
-    color: var(--font-color-alt);
-    font-weight: 700;
-    resize: vertical; /* Разрешить растягивание только по вертикали */
-    white-space: pre-wrap; /* Разрешить перенос слов на новую строку */
+}
+
+.editInput,
+.editDateInput{
+    white-space: pre-wrap;
     word-wrap: break-word;
 }
 
-.save-btn svg path,
-.edit-btn svg path {
-    fill: var(--font-color-alt);
+.textarea{
+    overflow-wrap: break-word;
+}
+
+.editInput::placeholder,
+.editDateInput::placeholder{
+    color: var(--font-color-alt);
 }
 
 .delete-all,
@@ -388,6 +395,12 @@ img {
     width: 120px;
     border: 2px solid transparent;
     transition: all .3s ease;
+    font-weight: 700;
+}
+
+.save-btn svg path,
+.edit-btn svg path {
+    fill: var(--font-color-alt);
 }
 
 .done-all:hover{
