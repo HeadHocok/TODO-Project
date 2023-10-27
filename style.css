@@ -219,7 +219,6 @@ h4{
 
 .table td {
     padding: 10px;
-    text-align: start;
     overflow-wrap: break-word;
 }
 
@@ -248,7 +247,7 @@ h4{
 
 .taskTitle,
 .taskDateTitle{
-    padding-right: 10px;
+    padding: 0 5px 0 5px;
 }
 
 .btn{
@@ -321,14 +320,11 @@ h4{
     position: relative;
     color: var(--font-color);
     padding: 0;
+    text-align: start;
 }
 
 .task-date {
     color: var(--font-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
 }
 
 svg,
@@ -376,10 +372,7 @@ img {
 .editDateInput{
     white-space: pre-wrap;
     word-wrap: break-word;
-}
-
-.textarea{
-    overflow-wrap: break-word;
+    height: 55px;
 }
 
 .editInput::placeholder,
@@ -396,6 +389,11 @@ img {
     border: 2px solid transparent;
     transition: all .3s ease;
     font-weight: 700;
+}
+
+.text-end{
+    vertical-align: middle;
+    text-align: center;
 }
 
 .save-btn svg path,
